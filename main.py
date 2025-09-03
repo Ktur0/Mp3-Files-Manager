@@ -2,9 +2,11 @@ import pygame
 
 pygame.init()
 
-screenInfo = pygame.display.Info()
-screen = pygame.display.set_mode((screenInfo.current_w, screenInfo.current_h), pygame.RESIZABLE)
+screenInfo = (800, 600)
+screen = pygame.display.set_mode(screenInfo, pygame.RESIZABLE)
 run = True
+
+soundFiles = []
 
 while run:
 
@@ -12,4 +14,7 @@ while run:
     for event in events:
         if event.type == pygame.QUIT:
             run = False
-    
+
+    pygame.display.update()
+
+pygame.quit()
