@@ -4,7 +4,7 @@ import os
 # Initialize Pygame
 pygame.init()
 
-screenInfo = (600, 400)
+screenInfo = (460, 400)
 screen = pygame.display.set_mode(screenInfo, pygame.RESIZABLE)
 run = True
 
@@ -26,10 +26,14 @@ grey = (128, 128, 128)
 # Initalize frames and buttons
 frameX, frameY = 20, 20
 frameSizeX, frameSizeY = 300, 100
+buttonX, buttonY = frameX + frameSizeX + 20, frameY
+buttonSizeX, buttonSizeY = 100, 100
 nameFilesFrame = []
+openFilesButton = []
 
 for i in range(len(soundFilesPath)):
     nameFilesFrame.append(pygame.Rect(frameX, frameY + i*(frameSizeY + frameY), frameSizeX, frameSizeY))
+    openFilesButton.append(pygame.Rect(buttonX, buttonY + i*(buttonSizeY + frameY), buttonSizeX, buttonSizeY))
 
 while run:
 
@@ -42,6 +46,9 @@ while run:
 
     for frame in nameFilesFrame:
         pygame.draw.rect(screen, grey, frame)
+    
+    for button in openFilesButton:
+        pygame.draw.rect(screen, black, button)
 
     pygame.display.update()
 
