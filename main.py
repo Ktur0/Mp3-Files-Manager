@@ -10,6 +10,7 @@ clock = pygame.time.Clock()
 run = True
 
 # Load sound files
+soundNames = []
 soundFolder = 'mp3_files'
 soundFilesPath = []
 pygame.mixer.init()
@@ -17,6 +18,7 @@ for i in os.listdir(soundFolder):
     if i.endswith('.mp3'):
         try:
             soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
+            soundNames.append(i)
         except Exception as e:
             print(f"Lỗi khi load {i}: {e}")
 
@@ -59,6 +61,9 @@ nameFrameImage = pygame.image.load("assets/nameframe.png")
 openButtonImage = pygame.image.load("assets/openfilesbutton.png")
 reloadButtonImage = pygame.image.load("assets/reloadbutton.png")
 stopButtonImage = pygame.image.load("assets/stopbutton.png")
+
+# Texts
+font = pygame.font.SysFont('Arial', 20)
 
 while run:
 
@@ -127,6 +132,10 @@ while run:
         button = button.move(0, scrollY)
         # pygame.draw.rect(screen, black, button)
         screen.blit(openButtonImage, (button.x, button.y))
+
+    for i in soundNames:
+        text = font.render(i, True, white)
+        screen.blit(text, (frameX + 20, nameFilesFrame[soundNames.index(i)].y + 20 + scrollY))
     
     # pygame.draw.rect(screen, red, reloadButton)
     screen.blit(reloadButtonImage, (reloadButton.x, reloadButton.y))
