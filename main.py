@@ -81,7 +81,7 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 for i in range (len(openFilesButton)):
-                    if mouseBox.colliderect(openFilesButton[i]):
+                    if mouseBox.colliderect(openFilesButton[i].move(0, scrollY)):
                         pygame.mixer.stop()  # Dừng tất cả âm thanh đang phát
                         soundFilesPath[i].play()  # Phát file mới
                 
@@ -92,7 +92,10 @@ while run:
 
                     pygame.mixer.stop()
 
+                    scrollY = 0
+
                     # Reload sound files
+                    soundNames = []
                     soundFolder = 'mp3_files'
                     soundFilesPath = []
                     pygame.mixer.init()
@@ -100,6 +103,7 @@ while run:
                         if i.endswith('.mp3'):
                             try:
                                 soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
+                                soundNames.append(i)
                             except Exception as e:
                                 print(f"Lỗi khi load {i}: {e}")
                     
