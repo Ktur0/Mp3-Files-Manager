@@ -19,6 +19,7 @@ for i in os.listdir(soundFolder):
             soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
         except Exception as e:
             print(f"Lỗi khi load {i}: {e}")
+
 # Colors
 white = (255, 255, 255)
 black = (0, 0, 0)
@@ -52,6 +53,13 @@ scrollSpeed = 10
 scrollY = 0
 maxScroll = -(len(openFilesButton) * (frameSizeY + frameY) - screenInfo[1])
 
+# Images
+backgroundImage = pygame.image.load("assets/background.png")
+nameFrameImage = pygame.image.load("assets/nameframe.png")
+openButtonImage = pygame.image.load("assets/openfilesbutton.png")
+reloadButtonImage = pygame.image.load("assets/reloadbutton.png")
+stopButtonImage = pygame.image.load("assets/stopbutton.png")
+
 while run:
 
     clock.tick(60)
@@ -66,35 +74,36 @@ while run:
             run = False
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            for i in range (len(openFilesButton)):
-                if mouseBox.colliderect(openFilesButton[i]):
-                    pygame.mixer.stop()  # Dừng tất cả âm thanh đang phát
-                    soundFilesPath[i].play()  # Phát file mới
-            
-            if mouseBox.colliderect(stopButton):
-                pygame.mixer.stop()
-            
-            if mouseBox.colliderect(reloadButton):
-
-                pygame.mixer.stop()
-
-                # Reload sound files
-                soundFolder = 'mp3_files'
-                soundFilesPath = []
-                pygame.mixer.init()
-                for i in os.listdir(soundFolder):
-                    if i.endswith('.mp3'):
-                        try:
-                            soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
-                        except Exception as e:
-                            print(f"Lỗi khi load {i}: {e}")
+            if event.button == 1:
+                for i in range (len(openFilesButton)):
+                    if mouseBox.colliderect(openFilesButton[i]):
+                        pygame.mixer.stop()  # Dừng tất cả âm thanh đang phát
+                        soundFilesPath[i].play()  # Phát file mới
                 
-                # Regenerate frames and buttons
-                nameFilesFrame = []
-                openFilesButton = []
-                for i in range(len(soundFilesPath)):
-                    nameFilesFrame.append(pygame.Rect(frameX, frameY + i*(frameSizeY + frameY), frameSizeX, frameSizeY))
-                    openFilesButton.append(pygame.Rect(buttonX, buttonY + i*(buttonSizeY + frameY), buttonSizeX, buttonSizeY))
+                if mouseBox.colliderect(stopButton):
+                    pygame.mixer.stop()
+                
+                if mouseBox.colliderect(reloadButton):
+
+                    pygame.mixer.stop()
+
+                    # Reload sound files
+                    soundFolder = 'mp3_files'
+                    soundFilesPath = []
+                    pygame.mixer.init()
+                    for i in os.listdir(soundFolder):
+                        if i.endswith('.mp3'):
+                            try:
+                                soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
+                            except Exception as e:
+                                print(f"Lỗi khi load {i}: {e}")
+                    
+                    # Regenerate frames and buttons
+                    nameFilesFrame = []
+                    openFilesButton = []
+                    for i in range(len(soundFilesPath)):
+                        nameFilesFrame.append(pygame.Rect(frameX, frameY + i*(frameSizeY + frameY), frameSizeX, frameSizeY))
+                        openFilesButton.append(pygame.Rect(buttonX, buttonY + i*(buttonSizeY + frameY), buttonSizeX, buttonSizeY))
 
             if event.button == 4:
                 scrollY += scrollSpeed
@@ -106,19 +115,23 @@ while run:
     maxScroll = -(len(openFilesButton) * (frameSizeY + frameY) - screenInfo[1]) - 20
     scrollY = min(0, max(scrollY, maxScroll))
 
-    screen.fill(white)
+    screen.blit(backgroundImage, (0, 0))
 
     # Draw frames and buttons
     for frame in nameFilesFrame:
         frame = frame.move(0, scrollY)
-        pygame.draw.rect(screen, grey, frame)
+        # pygame.draw.rect(screen, grey, frame)
+        screen.blit(nameFrameImage, (frame.x, frame.y))
     
     for button in openFilesButton:
         button = button.move(0, scrollY)
-        pygame.draw.rect(screen, black, button)
+        # pygame.draw.rect(screen, black, button)
+        screen.blit(openButtonImage, (button.x, button.y))
     
-    pygame.draw.rect(screen, red, reloadButton)
-    pygame.draw.rect(screen, blue, stopButton)
+    # pygame.draw.rect(screen, red, reloadButton)
+    screen.blit(reloadButtonImage, (reloadButton.x, reloadButton.y))
+    # pygame.draw.rect(screen, blue, stopButton)
+    screen.blit(stopButtonImage, (stopButton.x, stopButton.y))
 
     pygame.display.update()
 

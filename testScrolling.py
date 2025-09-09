@@ -40,7 +40,8 @@ while running:
     scroll_x = min(0, max(scroll_x, max_scroll))
 
     # Vẽ nền
-    screen.fill(WHITE)
+    colour = "white"
+    screen.fill(colour)
 
     # Vẽ các khối nằm trong vùng nhìn thấy
     for block in blocks:
