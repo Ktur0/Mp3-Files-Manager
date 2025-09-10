@@ -63,7 +63,7 @@ reloadButtonImage = pygame.image.load("assets/reloadbutton.png")
 stopButtonImage = pygame.image.load("assets/stopbutton.png")
 
 # Texts
-font = pygame.font.SysFont('Arial', 20)
+font = pygame.font.SysFont('Roboto', 20)
 
 while run:
 
