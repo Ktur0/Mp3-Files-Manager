@@ -18,6 +18,8 @@ for i in os.listdir(soundFolder):
     if i.endswith('.mp3'):
         try:
             soundFilesPath.append(pygame.mixer.Sound(os.path.join(soundFolder, i)))
+            if len(i.split()) > 5:
+                i = ' '.join(i.split()[:5]) + '...'
             soundNames.append(i)
         except Exception as e:
             print(f"Lỗi khi load {i}: {e}")
@@ -139,7 +141,7 @@ while run:
 
     for i in soundNames:
         text = font.render(i, True, white)
-        screen.blit(text, (frameX + 20, nameFilesFrame[soundNames.index(i)].y + 20 + scrollY))
+        screen.blit(text, (frameX + 20, nameFilesFrame[soundNames.index(i)].y + 40 + scrollY))
     
     # pygame.draw.rect(screen, red, reloadButton)
     screen.blit(reloadButtonImage, (reloadButton.x, reloadButton.y))
