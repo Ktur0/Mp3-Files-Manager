@@ -3,6 +3,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 import shutil
+import sys
 
 # Initialize Pygame
 pygame.init()
@@ -13,7 +14,12 @@ clock = pygame.time.Clock()
 run = True
 
 # Lấy đường dẫn của file py hiện tại
-current_dir = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    # Nếu chạy bằng file exe
+    current_dir = os.path.dirname(sys.executable)
+else:
+    # Nếu chạy bằng file .py
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Lấy đường dẫn folder mp3_files
 DEST_FOLDER = os.path.join(current_dir, "mp3_files")
@@ -160,6 +166,8 @@ while run:
                         indexSelected = i
                 
                 if mouseBox.colliderect(deleteFilesButton) and indexSelected != None:
+
+                    pygame.mixer.stop()  # Dừng tất cả âm thanh đang phát
                     
                     if os.path.exists(soundFilesPath[indexSelected]): # Kiểm file có tồn tại hay không nếu có thì xóa
                         try:
