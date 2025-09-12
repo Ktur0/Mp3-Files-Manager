@@ -55,7 +55,7 @@ Chào mừng đến với repo của phần mềm Mp3 Files Manager - một ph�
 ### Sau khi tải file lên thành công bạn có thể mở các file tương ứng bằng cách chọn nút Play nằm kế tên mỗi file. 
 ### Bạn có thể chọn nút reload (nút màu đen bên trên) để refresh lại các file.
 ### Bạn có thể chọn nút stop (nút màu đỏ) để dừng tất cả các file đang chạy.
-## Lưu ý: File thêm vào bắt buộc file là file mp3 nếu là bất kì file có đuôi nào khác đều sẽ không hiển thị trên phần mềm. Và những file mp3 bị lỗi có thể dẫn đến crash phần mềm nếu mở lên, vì vậy hãy kiểm tra file thật kĩ trước khi thêm vào phần mềm để sử dụng nhé!
+## Lưu ý: File thêm vào bắt buộc phải là file mp3 nếu là bất kì file có đuôi nào khác đều sẽ không hiển thị trên phần mềm. Và những file mp3 bị lỗi có thể dẫn đến crash phần mềm nếu mở lên, vì vậy hãy kiểm tra file thật kĩ trước khi thêm vào phần mềm để sử dụng nhé!
 
 ![image alt](https://github.com/Ktur0/Mp3-Files-Manager/blob/ccd9e747c3c9ac541d8351e231ecfb0fa73ff3bf/images/8da20ab8-ab21-49c8-a073-937d18f0d129.jpg)
 
@@ -67,5 +67,6 @@ Chào mừng đến với repo của phần mềm Mp3 Files Manager - một ph�
 ### Sau khi xóa
 
 ![image alt](https://github.com/Ktur0/Mp3-Files-Manager/blob/ccd9e747c3c9ac541d8351e231ecfb0fa73ff3bf/images/cd0c4050-6bf0-43a9-8136-93281e4cb27c.jpg)
+
 
 
