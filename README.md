@@ -43,7 +43,7 @@ Chào mừng đến với repo của phần mềm Mp3 Files Manager - một ph�
 ![image alt](https://github.com/Ktur0/Mp3-Files-Manager/blob/ccd9e747c3c9ac541d8351e231ecfb0fa73ff3bf/images/4f154755-e740-4f6c-972f-21a603798351.jpg)
 
 ## Mở và sử dụng phần mềm
-### Nếu bạn cài đặt phần mềm ở một thư mục khác không nằm trong thư mục hệ thống (không nằm trong Program Files (86x)) thì cứ mở bình thường thôi. Nếu bạn cài mặc định (cài trong Program Files (86x)) thì click chuột phải và phần mềm chọn "Run as administrator"
+### Nếu bạn cài đặt phần mềm ở một thư mục khác không nằm trong thư mục hệ thống (không nằm trong Program Files (86x)) thì cứ mở bình thường thôi. Nếu bạn cài mặc định (cài trong Program Files (86x)) thì click chuột phải vào phần mềm chọn "Run as administrator"
 
 ![image alt](https://github.com/Ktur0/Mp3-Files-Manager/blob/ccd9e747c3c9ac541d8351e231ecfb0fa73ff3bf/images/187e9a77-0220-4b1a-8fff-ea02f547f623.jpg)
 
